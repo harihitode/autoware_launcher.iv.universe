@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+  <!-- additional arguments for NDT -->
+  <arg name="ndt_threads"/>
+  <arg name="ndt_debug_tool"/>
+  <arg name="ndt_neighborsearch_method"/>
+  <arg name="ndt_dump_stats"/>
   <!-- localization module -->
   <group ns="localization">
     <!-- util module -->
@@ -10,6 +15,10 @@
     <!-- pose_estimator module -->
     <group ns="pose_estimator">
       <include file="$(find localization_launch)/launch/pose_estimator/pose_estimator.launch">
+        <arg name="ndt_threads" value="$(arg ndt_threads)" />
+        <arg name="ndt_debug_tool" value="$(arg ndt_debug_tool)" />
+        <arg name="ndt_neighborsearch_method" value="$(arg ndt_neighborsearch_method)" />
+        <arg name="ndt_dump_stats" value="$(arg ndt_dump_stats)" />
       </include>
     </group>
     <!-- twist_estimator module -->

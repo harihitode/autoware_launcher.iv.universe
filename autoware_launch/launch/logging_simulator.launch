@@ -44,7 +44,17 @@
   </include>
 
   <!-- Localization -->
-  <include file="$(find localization_launch)/launch/localization.launch" if="$(arg localization)">
+  <!-- NDT OMP Num Threads -->
+  <arg name="ndt_threads" default="4" />
+  <arg name="ndt_neighborsearch_method" default="0" />
+  <arg name="ndt_debug_tool" default="" />
+  <arg name="ndt_dump_stats" default="true" />
+
+  <include file="$(find localization_launch)/launch/localization.launch">
+    <arg name="ndt_threads" value="$(arg ndt_threads)"/>
+    <arg name="ndt_neighborsearch_method" value="$(arg ndt_neighborsearch_method)"/>
+    <arg name="ndt_debug_tool" value="$(arg ndt_debug_tool)"/>
+    <arg name="ndt_dump_stats" value="$(arg ndt_dump_stats)"/>
   </include>
 
   <!-- Perception -->
