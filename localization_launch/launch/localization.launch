@@ -5,8 +5,6 @@
   <arg name="ndt_debug_tool"/>
   <arg name="ndt_neighborsearch_method"/>
   <arg name="ndt_dump_stats"/>
-  <!-- set local PCL library path -->
-  <env name="LD_LIBRARY_PATH" value="$(env DEBUG_PCL_PATH):$(env LD_LIBRARY_PATH)" />
   <!-- localization module -->
   <group ns="localization">
     <!-- util module -->
