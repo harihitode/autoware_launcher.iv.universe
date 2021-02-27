@@ -226,12 +226,12 @@ Visualization Manager:
                   Show Axes: false
                   Show Trail: false
                   Value: true
-                velodyne_top:
+                velodyne:
                   Alpha: 1
                   Show Axes: false
                   Show Trail: false
                   Value: true
-                velodyne_top_base_link:
+                velodyne_base_link:
                   Alpha: 1
                   Show Axes: false
                   Show Trail: false
