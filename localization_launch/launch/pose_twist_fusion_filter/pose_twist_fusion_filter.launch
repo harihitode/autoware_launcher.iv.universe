@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="ekf_debug_tool" />
   <include file="$(find ekf_localizer)/launch/ekf_localizer.launch">
     <arg name="enable_yaw_bias_estimation" default="False"/>
     <arg name="use_pose_with_covariance" default="True"/>
@@ -22,5 +23,6 @@
 
     <arg name="proc_stddev_vx_c" default="10.0"/>
     <arg name="proc_stddev_wz_c" default="5.0"/>
+    <arg name="ekf_debug_tool" value="$(arg ekf_debug_tool)" />
   </include>
 </launch>

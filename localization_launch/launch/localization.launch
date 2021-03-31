@@ -5,6 +5,7 @@
   <arg name="ndt_debug_tool"/>
   <arg name="ndt_neighborsearch_method"/>
   <arg name="ndt_dump_stats"/>
+  <arg name="ekf_debug_tool"/>
   <!-- localization module -->
   <group ns="localization">
     <!-- util module -->
@@ -29,6 +30,7 @@
     <!-- pose_twist_fusion_filter module -->
     <group ns="pose_twist_fusion_filter">
       <include file="$(find localization_launch)/launch/pose_twist_fusion_filter/pose_twist_fusion_filter.launch">
+        <arg name="ekf_debug_tool" value="$(arg ekf_debug_tool)" />
       </include>
     </group>
     <!-- final twist output of localization -->
