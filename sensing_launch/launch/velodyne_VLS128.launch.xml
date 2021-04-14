@@ -30,6 +30,13 @@
     <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)" />
   </include>
 
+  <node pkg="velodyne_pointcloud" exec="interpolate_node" name="velodyne_interpolate_node" output="screen">
+    <param name="use_sim_time" value="true" />
+    <remap from="velodyne_points_ex" to="mirror_cropped/pointcloud_ex" />
+    <remap from="velodyne_points_interpolate" to="rectified/pointcloud" />
+    <remap from="velodyne_points_interpolate_ex" to="rectified/pointcloud_ex" />
+  </node>
+
   <!-- Velodyne Monitor -->
   <include file="$(find-pkg-share velodyne_monitor)/launch/velodyne_monitor.launch.xml" if="$(var launch_driver)">
     <arg name="ip_address" value="$(var device_ip)" />

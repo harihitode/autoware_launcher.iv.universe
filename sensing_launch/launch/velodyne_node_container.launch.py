@@ -113,20 +113,20 @@ def launch_setup(context, *args, **kwargs):
     )
     )
 
-    nodes.append(ComposableNode(
-        package='velodyne_pointcloud',
-        plugin='velodyne_pointcloud::Interpolate',
-        name='velodyne_interpolate_node',
-        remappings=[
-            ('velodyne_points_ex', 'mirror_cropped/pointcloud_ex'),
-            ('velodyne_points_interpolate', 'rectified/pointcloud'),
-            ('velodyne_points_interpolate_ex', 'rectified/pointcloud_ex'),
-        ],
-        parameters=[{
-            'use_sim_time': EnvironmentVariable(name='AW_ROS2_USE_SIM_TIME', default_value='False'),
-        }],
-    )
-    )
+    # nodes.append(ComposableNode(
+    #     package='velodyne_pointcloud',
+    #     plugin='velodyne_pointcloud::Interpolate',
+    #     name='velodyne_interpolate_node',
+    #     remappings=[
+    #         ('velodyne_points_ex', 'mirror_cropped/pointcloud_ex'),
+    #         ('velodyne_points_interpolate', 'rectified/pointcloud'),
+    #         ('velodyne_points_interpolate_ex', 'rectified/pointcloud_ex'),
+    #     ],
+    #     parameters=[{
+    #         'use_sim_time': EnvironmentVariable(name='AW_ROS2_USE_SIM_TIME', default_value='False'),
+    #     }],
+    # )
+    # )
 
     nodes.append(ComposableNode(
         package='pointcloud_preprocessor',
@@ -148,7 +148,7 @@ def launch_setup(context, *args, **kwargs):
         name='velodyne_node_container',
         namespace='pointcloud_preprocessor',
         package='rclcpp_components',
-        executable='component_container',
+        executable='component_container_mt',
         composable_node_descriptions=nodes,
         parameters=[{
             'use_sim_time': EnvironmentVariable(name='AW_ROS2_USE_SIM_TIME', default_value='False'),
